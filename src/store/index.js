@@ -13,15 +13,24 @@ const counterReducer = (state = initialState, action) => {
   if (action.type === 'increase') {
     return {
       counter: state.counter + action.amount,
+      // Must always set all the other states!
       showCounter: state.showCounter,
     };
   }
 
   if (action.type === 'decrement') {
+    // Never do it like that!
+    state.counter--;
+
     return {
-      counter: state.counter - 1,
+      counter: state.counter,
       showCounter: state.showCounter,
     };
+
+    // return {
+    //   counter: state.counter - 1,
+    //   showCounter: state.showCounter,
+    // };
   }
 
   if (action.type === 'toggle') {
